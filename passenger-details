@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit=" return check()">
+    <label>Name:</label><br>
+    <input type="text" id="name" placeholder="eg:anu"/><br><br>
+    <label>Age:</label><br>
+    <input type="text" id="age" placeholder="eg:24"><br><br>
+    <label>Email Id:</label><br>
+    <input type="email" id="email" placeholder="examplemail@gmail.com"/><br><br>
+    <label>Gender:</label><br>
+    <input type="text" id="gender" placeholder="female"/><br><br>
+    <button >Validate</button>
+</form>
+
+    <script>
+         function check(){
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let email =  document.getElementById("email").value;
+            let gender = document.getElementById("gender").value;
+
+            let validemail = /^[^\s@]+@[^\s@]+\.[^/s@]+$/;  
+            if(!validemail.test(email)){
+                alert("Invalid Email");
+                return false;
+            }        
+
+            if(isNaN(age)|| age<1||age>100){
+                alert("Enter a valid age");
+                return false;
+            }
+
+            if(gender !== "male" &&  gender !== "female"){
+                alert("Enter a gender correctly");
+                return false;
+            }
+            alert("Entered succussfully");
+            return true;
+         }
+    </script>
+
+</body>
+</html>
