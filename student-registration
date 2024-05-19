@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <script>
+        function validateForm() {
+            const fullName = document.getElementById("fullName").value;
+            const age = document.getElementById("age").value;
+            const email = document.getElementById("email").value;
+            const studentID = document.getElementById("studentID").value;
+            const major = document.getElementById("major").value;
+
+            // Validate Full Name
+            const namePattern = /^[A-Za-z\s]+$/;
+            if (!namePattern.test(fullName)) {
+                alert("Full Name must contain only alphabetic characters.");
+                return false;
+            }
+
+
+            if (isNaN(age) || age < 18 || age > 60) {
+                alert("Age must be a number between 18 and 60.");
+                return false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+
+            const studentIDPattern = /^[A-Za-z0-9]+$/;
+            if (!studentIDPattern.test(studentID)) {
+                alert("Student ID must be alphanumeric.");
+                return false;
+            }
+
+
+            if (major === "") {
+                alert("Please select a major.");
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+    <form onsubmit="return validateForm()">
+        <label for="fullName">Full Name:</label><br>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required><br><br>
+        
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" placeholder="Enter your age" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+        
+        <label for="studentID">Student ID:</label><br>
+        <input type="text" id="studentID" name="studentID" placeholder="Enter your student ID" required><br><br>
+        
+        <label for="major">Major:</label><br>
+        <select id="major" name="major" required>
+            <option value="">Select Major</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Biology">Biology</option>
+           
+        </select><br><br>
+        
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
